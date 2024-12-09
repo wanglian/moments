@@ -4,9 +4,11 @@
     <%= note.content %>
   </p>
 
-  <div>
-    <%= link_to "Edit", edit_note_path(note) %> |
+  <% if authenticated? %>
+    <div>
+      <%= link_to "Edit", edit_note_path(note) %> |
 
-    <%= link_to "Delete", note, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
-  </div>
+      <%= link_to "Delete", note, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+    </div>
+  <% end %>
 </div>

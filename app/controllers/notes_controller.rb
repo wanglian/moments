@@ -1,11 +1,13 @@
 class NotesController < ApplicationController
   include ActionView::RecordIdentifier
 
+  allow_unauthenticated_access only: %i[ index ]
+
   before_action :set_note, only: %i[ show edit update destroy ]
 
   # GET /notes or /notes.json
   def index
-    @notes = Note.where(user: Current.user).order(id: :desc)
+    @notes = Note.where(user: Current.user || User.first).order(id: :desc)
   end
 
   # GET /notes/1 or /notes/1.json

@@ -29,6 +29,8 @@
         <% if authenticated?  %>
           <span><%= Current.user.email_address %></span>
           <%= link_to "Sign out", session_path, data: { "turbo-method": :delete } %>
+        <% else %>
+          <%= link_to "Sign in", new_session_path %>
         <% end %>
       </nav>
       <h1>Moments</h1>
