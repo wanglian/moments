@@ -11,7 +11,7 @@
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
@@ -26,8 +26,10 @@
   <body>
     <header>
       <nav>
-        <span><%= Current.user.email_address %></span>
-        <%= link_to "Sign out", session_path, data: { "turbo-method": :delete } if authenticated? %>
+        <% if authenticated?  %>
+          <span><%= Current.user.email_address %></span>
+          <%= link_to "Sign out", session_path, data: { "turbo-method": :delete } %>
+        <% end %>
       </nav>
       <h1>Moments</h1>
       <p>Life is about moments</p>
