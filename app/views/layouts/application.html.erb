@@ -26,6 +26,7 @@
   <body>
     <header>
       <nav>
+        <span><%= Current.user.email_address %></span>
         <%= link_to "Sign out", session_path, data: { "turbo-method": :delete } if authenticated? %>
       </nav>
       <h1>Moments</h1>

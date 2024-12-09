@@ -5,7 +5,7 @@ class NotesController < ApplicationController
 
   # GET /notes or /notes.json
   def index
-    @notes = Note.order(id: :desc)
+    @notes = Note.where(user: Current.user).order(id: :desc)
   end
 
   # GET /notes/1 or /notes/1.json
@@ -24,6 +24,7 @@ class NotesController < ApplicationController
   # POST /notes or /notes.json
   def create
     @note = Note.new(note_params)
+    @note.user = Current.user
 
     respond_to do |format|
       if @note.save
