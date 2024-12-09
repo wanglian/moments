@@ -25,6 +25,9 @@
 
   <body>
     <header>
+      <nav>
+        <%= link_to "Sign out", session_path, data: { "turbo-method": :delete } if authenticated? %>
+      </nav>
       <h1>Moments</h1>
       <p>Life is about moments</p>
     </header>
