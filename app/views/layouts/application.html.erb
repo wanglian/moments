@@ -35,6 +35,7 @@
       </nav>
       <h1>Moments</h1>
       <p>Life is about moments</p>
+      <%= button_to "Create moment", new_note_path, method: :get if authenticated? %>
     </header>
 
     <main>
