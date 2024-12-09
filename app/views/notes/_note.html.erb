@@ -1,7 +1,12 @@
 <div id="<%= dom_id note %>">
+  <h2><%= note.created_at %></h2>
   <p>
-    <strong>Content:</strong>
     <%= note.content %>
   </p>
 
+  <div>
+    <%= link_to "Edit", edit_note_path(note) %> |
+
+    <%= link_to "Delete", note, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+  </div>
 </div>
