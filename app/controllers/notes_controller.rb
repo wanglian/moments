@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  include ActionView::RecordIdentifier
+
   before_action :set_note, only: %i[ show edit update destroy ]
 
   # GET /notes or /notes.json
@@ -25,7 +27,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to action: :index, notice: "Note was successfully created." }
+        format.html { redirect_to notes_path, notice: "Moment was successfully created." }
         format.json { render :show, status: :created, location: @note }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,7 @@ class NotesController < ApplicationController
   def update
     respond_to do |format|
       if @note.update(note_params)
-        format.html { redirect_to @note, notice: "Note was successfully updated." }
+        format.html { redirect_to notes_path(anchor: dom_id(@note)), notice: "Moment was successfully updated." }
         format.json { render :show, status: :ok, location: @note }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +54,7 @@ class NotesController < ApplicationController
     @note.destroy!
 
     respond_to do |format|
-      format.html { redirect_to notes_path, status: :see_other, notice: "Note was successfully destroyed." }
+      format.html { redirect_to notes_path, status: :see_other, notice: "Moment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
