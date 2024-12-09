@@ -1,5 +1,5 @@
 <div id="<%= dom_id note %>">
-  <h2><%= note.created_at %></h2>
+  <h2><%= time_tag note.created_at, "data-local": "weekday-or-date" %></h2>
   <p>
     <%= note.content %>
   </p>
