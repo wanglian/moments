@@ -1,19 +1,15 @@
 <%= form_with(model: note, data: { turbo: false }) do |form| %>
   <% if note.errors.any? %>
-    <div style="color: red">
-      <ul>
-        <% note.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+    <p class="notice" style="color: red">
+      <%= note.errors.first.full_message %>
+    </p>
   <% end %>
 
-  <div>
+  <p>
     <%= form.rich_textarea :content %>
-  </div>
+  </p>
 
-  <div>
+  <p>
     <%= form.submit "Save" %>
-  </div>
+  </p>
 <% end %>

@@ -29,7 +29,7 @@
     <header>
       <nav>
         <% if authenticated?  %>
-          <span><%= Current.user.email_address %></span>
+          <%= link_to "Create moment", new_note_path, method: :get %>
           <%= link_to "Sign out", session_path, data: { "turbo-method": :delete } %>
         <% else %>
           <%= link_to "Sign in", new_session_path %>
@@ -37,7 +37,7 @@
       </nav>
       <h1>Moments</h1>
       <p>Life is about moments</p>
-      <%= button_to "Create moment", new_note_path, method: :get if authenticated? %>
+
     </header>
 
     <main>
