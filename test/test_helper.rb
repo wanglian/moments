@@ -11,15 +11,6 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    include SessionTestHelper
   end
-end
-
-module SignInHelper
-  def sign_in_as(user)
-    post session_url(email_address: user.email_address, password: "password")
-  end
-end
-
-class ActionDispatch::IntegrationTest
-  include SignInHelper
 end

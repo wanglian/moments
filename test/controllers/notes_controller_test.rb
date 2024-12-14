@@ -2,7 +2,7 @@ require "test_helper"
 
 class NotesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    sign_in_as users(:will)
+    sign_in users(:will)
     @note = notes(:one)
   end
 

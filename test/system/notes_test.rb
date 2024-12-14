@@ -3,15 +3,13 @@ require "application_system_test_case"
 class NotesTest < ApplicationSystemTestCase
   setup do
     @note = notes(:one)
-    # not working??
-    visit new_session_url
-    fill_in "email_address", with: users(:will).email_address
-    fill_in "password", with: "password"
-    click_on "Sign in"
+
+    sign_in users(:will).email_address
   end
 
   test "visiting the index" do
     visit notes_url
+
     assert_selector "div.notes"
   end
 
