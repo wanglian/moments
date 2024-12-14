@@ -2,6 +2,7 @@ require "test_helper"
 
 class NotesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in_as users(:will)
     @note = notes(:one)
   end
 
@@ -20,7 +21,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
       post notes_url, params: { note: { content: @note.content } }
     end
 
-    assert_redirected_to note_url(Note.last)
+    assert_redirected_to notes_url
   end
 
   test "should show note" do
@@ -35,7 +36,7 @@ class NotesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update note" do
     patch note_url(@note), params: { note: { content: @note.content } }
-    assert_redirected_to note_url(@note)
+    assert_redirected_to notes_url(anchor: dom_id(@note))
   end
 
   test "should destroy note" do
