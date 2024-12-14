@@ -29,10 +29,11 @@
     <header>
       <nav>
         <% if authenticated?  %>
-          <%= link_to "Create moment", new_note_path, method: :get %>
+          <%= link_to "Home", '/' %>
+          <%= link_to "Create moment", new_note_path %>
           <%= link_to "Sign out", session_path, data: { "turbo-method": :delete } %>
         <% else %>
-          <%= link_to "Sign in", new_session_path %>
+          <%= link_to "Sign in", new_session_path unless current_page?(new_session_path) %>
         <% end %>
       </nav>
       <h1>Moments</h1>

@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+<% if notice %><p style="color: green" class="notice"><%= notice %></p><% end %>
 
 <% content_for :title, "Moments" %>
 
@@ -9,5 +9,3 @@
     </section>
   <% end %>
 </div>
-
-
