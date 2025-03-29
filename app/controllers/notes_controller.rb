@@ -7,7 +7,8 @@ class NotesController < ApplicationController
 
   # GET /notes or /notes.json
   def index
-    @notes = Note.where(user: Current.user || User.first).order(id: :desc)
+    @notes = Note.where(user: Current.user || User.first)
+                 .order(Arel.sql('pinned_at DESC NULLS LAST, id DESC'))
   end
 
   # GET /notes/1 or /notes/1.json
@@ -59,6 +60,16 @@ class NotesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to notes_path, status: :see_other, notice: "Moment was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def toggle_pin
+    @note = Note.find(params[:id])
+    @note.update(pinned_at: @note.pinned? ? nil : Time.current)
+
+    respond_to do |format|
+      format.html { redirect_to notes_path(anchor: dom_id(@note)), notice: "Note #{@note.pinned? ? 'pinned' : 'unpinned'} successfully." }
+      format.json { render :show, status: :ok, location: @note }
     end
   end
 

@@ -8,3 +8,41 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* Add notes styles */
+.pinned {
+  border-left: 3px solid #ffd700;
+  padding-left: 1rem;
+  background-color: #fffdf5;
+  margin-bottom: 2rem;
+}
+
+.pin-indicator {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 1.2em;
+}
+
+.pin-button {
+  color: #666;
+  text-decoration: none;
+}
+
+.pin-button:hover {
+  color: #333;
+}
+
+/* Add some spacing between notes */
+[id^="note_"] {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Style the note timestamp */
+[id^="note_"] h2 {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}

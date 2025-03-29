@@ -53,6 +53,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_30_193506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.datetime "pinned_at"
+    t.index ["pinned_at"], name: "index_notes_on_pinned_at"
   end
 
   create_table "sessions", force: :cascade do |t|
