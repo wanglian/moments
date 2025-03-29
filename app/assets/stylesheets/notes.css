@@ -1,0 +1,10 @@
+.pinned {
+    border-left: 3px solid #ffd700;
+    padding-left: 1rem;
+    background-color: #fffdf5;
+}
+
+.pin-indicator {
+    display: inline-block;
+    margin-left: 0.5rem;
+}
