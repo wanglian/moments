@@ -3,6 +3,10 @@
 <% content_for :title, "Moments" %>
 
 <div id="notes">
+  <% if params[:pinned] %>
+    <h2>📌 Pinned Notes</h2>
+  <% end %>
+
   <% @notes.each do |note| %>
     <section>
       <%= render note %>

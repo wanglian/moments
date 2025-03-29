@@ -30,6 +30,7 @@
       <nav>
         <% if authenticated?  %>
           <%= link_to "Home", '/' %>
+          <%= link_to "📌 Pinned", pinned_notes_path %>
           <%= link_to "Create moment", new_note_path %>
           <%= link_to "Sign out", session_path, data: { "turbo-method": :delete } %>
         <% else %>

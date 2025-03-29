@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :notes do
+    collection do
+      get "pinned" => "notes#index", pinned: true
+    end
     member do
       post :toggle_pin
     end
