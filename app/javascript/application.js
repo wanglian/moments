@@ -7,3 +7,16 @@ import "@rails/actiontext"
 
 import LocalTime from "local-time"
 LocalTime.start()
+
+import { showToast } from "toast"
+
+window.showToast = showToast
+
+// Show flash messages if they exist
+document.addEventListener("turbo:load", () => {
+  const flash = document.querySelector("p.notice, p.alert")
+  if (flash) {
+    showToast(flash.textContent)
+    flash.remove()
+  }
+})

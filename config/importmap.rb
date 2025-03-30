@@ -10,3 +10,4 @@ pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "@stimulus-components/lightbox", to: "@stimulus-components--lightbox.js" # @4.0.0
 pin "lightgallery" # @2.8.2
+pin "toast", to: "toast.js"
