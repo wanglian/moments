@@ -9,6 +9,6 @@ class Note < ApplicationRecord
   end
 
   def title
-    created_at.strftime("%b %d, %A")
+    created_at.localtime.strftime("%b %d, %A")
   end
 end
