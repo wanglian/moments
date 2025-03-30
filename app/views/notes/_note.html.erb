@@ -1,6 +1,6 @@
 <div id="<%= dom_id note %>" data-controller="lightbox" data-lightbox-options-value='{"selector": "a img"}' class="<%= 'pinned' if note.pinned? %>">
   <h2>
-    <%= time_tag note.created_at, "data-local": "time-or-date" %>
+    <%= note.title %>
     <% if note.pinned? %>
       <span class="pin-indicator">📌</span>
     <% end %>

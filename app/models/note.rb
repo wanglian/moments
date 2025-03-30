@@ -7,4 +7,8 @@ class Note < ApplicationRecord
   def pinned?
     pinned_at.present?
   end
+
+  def title
+    created_at.strftime("%b %d, %A")
+  end
 end
