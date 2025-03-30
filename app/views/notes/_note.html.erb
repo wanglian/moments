@@ -1,22 +1,24 @@
-<div id="<%= dom_id note %>" data-controller="lightbox" data-lightbox-options-value='{"selector": "a img"}' class="<%= 'pinned' if note.pinned? %>">
-  <h2>
-    <%= note.title %>
-    <% if note.pinned? %>
-      <span class="pin-indicator">📌</span>
-    <% end %>
-  </h2>
-  <p>
-    <%= note.content %>
-  </p>
+<%= turbo_frame_tag dom_id(note) do %>
+  <div id="<%= dom_id note %>" data-controller="lightbox" data-lightbox-options-value='{"selector": "a img"}' class="<%= 'pinned' if note.pinned? %>">
+    <h2>
+      <%= note.title %>
+      <% if note.pinned? %>
+        <span class="pin-indicator">📌</span>
+      <% end %>
+    </h2>
+    <p>
+      <%= note.content %>
+    </p>
 
-  <% if authenticated? %>
-    <div>
-      <%= link_to "Edit", edit_note_path(note) %> |
-      <%= link_to note.pinned? ? "Unpin" : "Pin",
-                  toggle_pin_note_path(note),
-                  data: { "turbo-method": :post },
-                  class: "pin-button" %> |
-      <%= link_to "Delete", note, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
-    </div>
-  <% end %>
-</div>
+    <% if authenticated? %>
+      <div>
+        <%= link_to "Edit", edit_note_path(note), data: { turbo_frame: "_top" } %> |
+        <%= link_to note.pinned? ? "Unpin" : "Pin",
+                    toggle_pin_note_path(note),
+                    data: { "turbo-method": :post },
+                    class: "pin-button" %> |
+        <%= link_to "Delete", note, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

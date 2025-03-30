@@ -8,3 +8,28 @@
     display: inline-block;
     margin-left: 0.5rem;
 }
+
+/* Load more button styles */
+.load-more {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.loading-button {
+    background-color: #f0f0f0;
+    color: #666;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: wait;
+}
+
+/* Add some spacing between notes */
+#notes section {
+    margin-bottom: 1.5rem;
+}
+
+/* Style for the turbo frame loading state */
+turbo-frame[busy] .load-more {
+    opacity: 0.7;
+}

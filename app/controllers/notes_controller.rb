@@ -8,11 +8,17 @@ class NotesController < ApplicationController
   # GET /notes or /notes.json
   def index
     base_query = Note.where(user: Current.user || User.first)
+    @page = (params[:page] || 1).to_i
+    @per_page = 10
+
     @notes = if params[:pinned].present?
       base_query.where.not(pinned_at: nil).order(pinned_at: :desc)
     else
       base_query.order(id: :desc)
     end
+
+    @notes = @notes.limit(@per_page).offset((@page - 1) * @per_page)
+    @has_more = @notes.count == @per_page
   end
 
   # GET /notes/1 or /notes/1.json

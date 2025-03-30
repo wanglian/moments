@@ -7,9 +7,19 @@
     <h2>📌 Pinned Notes</h2>
   <% end %>
 
-  <% @notes.each do |note| %>
-    <section>
-      <%= render note %>
-    </section>
+  <%= turbo_frame_tag "notes_page_#{@page}" do %>
+    <% @notes.each do |note| %>
+      <section>
+        <%= render note %>
+      </section>
+    <% end %>
+
+    <% if @has_more %>
+      <%= turbo_frame_tag "notes_page_#{@page + 1}", src: notes_path(page: @page + 1, pinned: params[:pinned]), loading: :lazy do %>
+        <div class="load-more">
+          <%= button_tag "Loading more notes...", disabled: true, class: "loading-button" %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
