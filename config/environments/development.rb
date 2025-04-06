@@ -74,5 +74,9 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   # Allow multiple hosts, split by comma
-  config.hosts = ENV.fetch('RAILS_DEVELOPMENT_HOSTS', 'localhost').split(',')
+  config.hosts = [
+    IPAddr.new("0.0.0.0/0"),
+    "localhost",
+    ENV["RAILS_DEVELOPMENT_HOSTS"]
+  ]
 end
