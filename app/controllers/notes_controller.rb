@@ -14,7 +14,7 @@ class NotesController < ApplicationController
     @notes = if params[:pinned].present?
       base_query.where.not(pinned_at: nil).order(pinned_at: :desc)
     else
-      base_query.order(id: :desc)
+      base_query.order(created_at: :desc)
     end
 
     @notes = @notes.limit(@per_page).offset((@page - 1) * @per_page)
